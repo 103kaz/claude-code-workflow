@@ -2,12 +2,21 @@
   "name": "claude-code-workflow",
   "description": "code-guard and code-loops in one install.",
   "owner": { "name": "103kaz" },
-  "allowCrossMarketplaceDependenciesOn": ["claude-code-guard", "claude-code-loops"],
   "plugins": [
     {
       "name": "code-workflow",
       "source": "./",
       "description": "code-guard and code-loops in one install."
+    },
+    {
+      "name": "code-guard",
+      "source": { "source": "github", "repo": "103kaz/claude-code-guard" },
+      "description": "Harness for Claude Code: guard hooks and a verify loop."
+    },
+    {
+      "name": "code-loops",
+      "source": { "source": "github", "repo": "103kaz/claude-code-loops" },
+      "description": "Review loop and docs check for Claude Code."
     }
   ]
 }

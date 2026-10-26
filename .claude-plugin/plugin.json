@@ -2,11 +2,13 @@
   "name": "code-workflow",
   "version": "0.1.0",
   "description": "code-guard (guard hooks and a verify loop) and code-loops (review loop and docs check) in one install.",
-  "author": { "name": "103kaz" },
+  "author": {
+    "name": "103kaz"
+  },
   "license": "MIT",
   "repository": "https://github.com/103kaz/claude-code-workflow",
   "dependencies": [
-    { "name": "code-guard", "marketplace": "claude-code-guard" },
-    { "name": "code-loops", "marketplace": "claude-code-loops" }
+    "code-guard",
+    "code-loops"
   ]
 }
