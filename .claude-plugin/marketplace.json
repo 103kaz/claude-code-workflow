@@ -1,0 +1,13 @@
+{
+  "name": "claude-code-workflow",
+  "description": "code-guard and code-loops in one install.",
+  "owner": { "name": "103kaz" },
+  "allowCrossMarketplaceDependenciesOn": ["claude-code-guard", "claude-code-loops"],
+  "plugins": [
+    {
+      "name": "code-workflow",
+      "source": "./",
+      "description": "code-guard and code-loops in one install."
+    }
+  ]
+}
