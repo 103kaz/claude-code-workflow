@@ -1,7 +1,9 @@
 {
   "name": "claude-code-workflow",
   "description": "code-guard and code-loops in one install.",
-  "owner": { "name": "103kaz" },
+  "owner": {
+    "name": "103kaz"
+  },
   "plugins": [
     {
       "name": "code-workflow",
@@ -10,12 +12,20 @@
     },
     {
       "name": "code-guard",
-      "source": { "source": "github", "repo": "103kaz/claude-code-guard" },
+      "source": {
+        "source": "github",
+        "repo": "103kaz/claude-code-guard",
+        "sha": "7ee5053c5a73c0a024fbc21ac0eb340e1d79a3bb"
+      },
       "description": "Harness for Claude Code: guard hooks and a verify loop."
     },
     {
       "name": "code-loops",
-      "source": { "source": "github", "repo": "103kaz/claude-code-loops" },
+      "source": {
+        "source": "github",
+        "repo": "103kaz/claude-code-loops",
+        "sha": "a7033b38ca474305804e23913181af1304c349a0"
+      },
       "description": "Review loop and docs check for Claude Code."
     }
   ]
