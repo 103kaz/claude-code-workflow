@@ -1,6 +1,6 @@
 {
   "name": "code-workflow",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "code-guard (guard hooks and a verify loop) and code-loops (review loop and docs check) in one install.",
   "author": { "name": "103kaz" },
   "license": "MIT",
