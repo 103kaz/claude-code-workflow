@@ -14,8 +14,14 @@ fi
 
 validation=$(claude plugin validate . 2>&1) || { echo "$validation" >&2; exit 1; }
 
-# Every github-sourced plugin is pinned to a full commit sha.
-bad=$(jq -r '.plugins[] | select((.source | type) == "object" and .source.source == "github") | select((.source.sha // "") | test("^[0-9a-f]{40}$") | not) | .name' "$file")
+# Every plugin that is not in this repository comes from an https url (so that no ssh key is needed
+# to install it) and is pinned to a full commit sha.
+bad=$(jq -r '.plugins[] | select((.source | type) == "object") | select(.source.source != "url" or ((.source.url // "") | startswith("https://") | not)) | .name' "$file")
+if [ -n "$bad" ]; then
+  echo "not an https url source: $bad" >&2
+  exit 1
+fi
+bad=$(jq -r '.plugins[] | select((.source | type) == "object") | select((.source.sha // "") | test("^[0-9a-f]{40}$") | not) | .name' "$file")
 if [ -n "$bad" ]; then
   echo "not pinned to a commit sha: $bad" >&2
   exit 1
@@ -25,8 +31,6 @@ config=$(mktemp -d "${TMPDIR:-/tmp}/verify.XXXXXX")
 [ -n "$config" ] && [ -d "$config" ] || { echo "cannot create a temporary directory" >&2; exit 1; }
 trap 'rm -rf "$config"' EXIT
 export CLAUDE_CONFIG_DIR=$config
-# The dependencies are cloned over ssh when a key is available; use https so that this needs no key.
-export GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=url.https://github.com/.insteadOf GIT_CONFIG_VALUE_0=git@github.com:
 
 marketplace=$(jq -r .name "$file")
 claude plugin marketplace add "$root" >/dev/null
