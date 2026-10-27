@@ -15,6 +15,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -22,6 +23,20 @@ jobs:
 
       - name: Update marketplace.json
         run: bash scripts/update-pins.sh
+
+      - name: Check whether the pins moved
+        id: pins
+        run: |
+          if git diff --quiet; then
+            echo "moved=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "moved=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # A pull request made with GITHUB_TOKEN does not start other workflows, so the new pins are checked here.
+      - name: Install code-workflow with the new pins and run code-guard's tests
+        if: steps.pins.outputs.moved == 'true'
+        run: bash scripts/verify.sh
 
       - name: Open a pull request
         run: |
