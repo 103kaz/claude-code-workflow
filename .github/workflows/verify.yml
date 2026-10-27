@@ -1,0 +1,22 @@
+name: Verify
+
+on:
+  pull_request:
+    paths:
+      - ".claude-plugin/**"
+      - "scripts/**"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install code-workflow and run code-guard's tests
+        run: bash scripts/verify.sh

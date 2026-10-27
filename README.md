@@ -14,7 +14,7 @@ claude plugin marketplace add 103kaz/claude-code-workflow
 claude plugin install code-workflow@claude-code-workflow
 ```
 
-code-guard and code-loops are pinned to a commit sha in `.claude-plugin/marketplace.json`. The `Update pins` workflow runs daily and, when either repository has moved, opens a pull request (or updates the one that is already open); `scripts/update-pins.sh` (needs `jq` and `gh`) moves the pins in the file locally. A pin moves only when that pull request is merged.
+code-guard and code-loops are pinned to a commit sha in `.claude-plugin/marketplace.json`. The `Update pins` workflow runs daily and, when either repository has moved, opens a pull request (or updates the one that is already open); `scripts/update-pins.sh` (needs `jq` and `gh`) moves the pins in the file locally. A pin moves only when that pull request is merged. Before opening it, the workflow runs `scripts/verify.sh`, which installs code-workflow into an empty Claude Code config directory, checks that both plugins are enabled at the pinned commits, and runs code-guard's own tests; if that fails, no pull request is opened. The same script runs on pull requests that change the manifests, the scripts or the workflows (needs `claude`, `jq`, `perl` and `git`).
 
 Start a new session afterwards. `claude plugin list` shows `code-workflow`, `code-guard` and `code-loops`, all from `claude-code-workflow`.
 
