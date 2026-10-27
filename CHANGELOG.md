@@ -1,7 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.1.2 (2026-10-27)
 
+- Pins code-guard 0.5.3 and code-loops 0.3.4.
 - The README opens with what the plugins stop or check, and has an "After installing" section with the first-run steps. The pin and CI details moved to "Pinned versions".
 - code-guard and code-loops are fetched over their https URLs instead of the `github` source, which cloned over SSH when a key was configured.
 - `scripts/verify.sh` installs code-workflow into an empty Claude Code config directory, checks that both plugins are enabled at the pinned commits, and runs code-guard's tests. The `Update pins` workflow runs it before opening a pull request, and the `Verify` workflow runs it on pull requests that change the manifests, the scripts or the workflows.
