@@ -13,8 +13,8 @@
     {
       "name": "code-guard",
       "source": {
-        "source": "github",
-        "repo": "103kaz/claude-code-guard",
+        "source": "url",
+        "url": "https://github.com/103kaz/claude-code-guard.git",
         "sha": "8f1a990d7cfc1297444fecf9800204be8dd6378c"
       },
       "description": "Harness for Claude Code: guard hooks and a verify loop."
@@ -22,8 +22,8 @@
     {
       "name": "code-loops",
       "source": {
-        "source": "github",
-        "repo": "103kaz/claude-code-loops",
+        "source": "url",
+        "url": "https://github.com/103kaz/claude-code-loops.git",
         "sha": "fe29d4cdee93a1105f4287808d7a373cb6110171"
       },
       "description": "Review loop and docs check for Claude Code."
