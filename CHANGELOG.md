@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3 (2026-10-28)
+
+- Pins code-guard 0.5.4 and code-loops 0.3.5.
+  - code-guard 0.5.4 guards the config directory set by `CLAUDE_CONFIG_DIR` as it guards `~/.claude`, and reads the sandbox settings from there.
+  - code-loops 0.3.5 lets the commits of the review loop's fixes through once on the same push after a block, instead of stopping the push again. Without `CLAUDE_PLUGIN_DATA`, its record goes under `CLAUDE_CONFIG_DIR`.
+- The README's "After installing" step 5 and "A push meets both plugins" say what happens when the review loop's fixes are committed.
+
 ## 0.1.2 (2026-10-27)
 
 - Pins code-guard 0.5.3 and code-loops 0.3.4.
