@@ -15,7 +15,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/103kaz/claude-code-guard.git",
-        "sha": "abc93d854a5a9b166d468e542365e2944ce8029f"
+        "sha": "d19b44e84fe64bf395eeb09d66ff09cc6b76eaf6"
       },
       "description": "Harness for Claude Code: guard hooks and a verify loop."
     },
